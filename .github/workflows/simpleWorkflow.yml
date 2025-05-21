@@ -2,6 +2,9 @@ name: workflow overview
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   a_simple_job:
@@ -15,4 +18,14 @@ jobs:
         id: shellStep
         shell: python
         run: print("this is using the python shell")
+  my_self-hosted-job:
+    name: my self hosted job
+    runs-on: self-hosted
+    steps:
+      - name: steps in self hosted runner
+        id: selfHostedId
+        shell: sh
+        run: |
+          echo this is a multiline comment
+          echo and this job has been excecuted from my self-hosted runner
       
